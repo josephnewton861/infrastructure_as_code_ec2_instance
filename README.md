@@ -30,14 +30,14 @@ Things to do before running the project:
 9. Go back to your terminal and run the command `terraform apply`
       - This command actions the planned changes
       - Once the command has run you should see the following:
-            1. An EC2 instance running
-            2. Click the link of the instance and you should see a `Public IPv4 address` with a link that says open address
-            3. Once the link opens clcik the IP address and remove the `https://`
-            4. Add onto the end of the link add `/index.html` and enter. You should see a blank webpage and text that reads `My EC2 web server`
-            5. Go back to AWS and on the right hand panel you should see a link that says security groups and if clicked on it should show you a security group of                  test
-            6. Go back and seach for vpc. Click on it and you should a new VPC has been created of `test-vpc`
-            7. On the left hand side you should see a link that says subnets. Click on it an you will see the command has created 3 private and 3 public subnets
-            8. Go back on the left hand side the command should have also created a route table and internet gateway
+        - An EC2 instance running
+        - Click the link of the instance and you should see a `Public IPv4 address` with a link that says open address
+        - Once the link opens clcik the IP address and remove the `https://`
+        - Add onto the end of the link add `/index.html` and enter. You should see a blank webpage and text that reads `My EC2 web server`
+        - Go back to AWS and on the right hand panel you should see a link that says security groups and if clicked on it should show you a security group of                  test
+        - Go back and seach for vpc. Click on it and you should a new VPC has been created of `test-vpc`
+        - On the left hand side you should see a link that says subnets. Click on it an you will see the command has created 3 private and 3 public subnets
+        - Go back on the left hand side the command should have also created a route table and internet gateway
 10. After you have observed the instance and the feature the code has created. You need to now terminate the instance to stop unnecessary charges
 11. Go back to your terminal and run the following `terraform destroy`
       - This command will terminate your instance along with all the security configurations made
