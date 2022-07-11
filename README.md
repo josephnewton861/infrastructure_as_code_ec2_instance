@@ -19,7 +19,8 @@ Things to do before running the project:
 ## Running the project
 1.  Clone the project (please do not fork it) and open the project up using your prefered IDE.
 2.  On load of the project go to the file `terraform.tfvars`
-3.  In the file replace the credentials placeholders with your actual credentials from AWS
+3.  Create a file of `terraform.tfvars` and In the file replace the credentials placeholders seen in the screenshot below with your actual credentials from AWS
+![image](https://user-images.githubusercontent.com/57103519/178278900-0ac47a09-8783-4c3a-98eb-3f09a5248a89.png)
 4.  In the file replace the availability zone with the 3 availabilty zones closest to your present location
 5.  After completion open your terminal and run the following command `terraform init` to initialise terraform on your local machine
 6.  After initialising ensure the credentail changes you made earlier are running by using the command `terraform plan`
