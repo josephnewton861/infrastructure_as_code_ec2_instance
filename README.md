@@ -1,7 +1,7 @@
 # Infrastructure as code (IAC) EC2 instance
 
 ## Overview of project
-This project consists of setting up an Amazon Web Services (AWS) Elastic Computing Cloud (EC2) instance with necessary security configurations and ubuntu server with a basic html page.
+This project consists of setting up an Amazon Web Services (AWS) on demand free Elastic Computing Cloud (EC2) instance with necessary security configurations and ubuntu server with a basic html page.
 
 ## Setup instructions 
 For this project you will need the following:
@@ -9,7 +9,7 @@ For this project you will need the following:
 - Have an integrated development environment
 (IDE) installed
 - An AWS account
-- AWS Secret access-key
+- AWS secret access-key
 - AWS access key
 
 Things to do before running the project:
@@ -17,7 +17,7 @@ Things to do before running the project:
 - After creation save your pem key to an .ssh folder on your local machine
 
 ## Running the project
-1.  Clone the project and open the project up using your prefered IDE.
+1.  Clone the project (please do not fork it) and open the project up using your prefered IDE.
 2.  On load of the project go to the file `terraform.tfvars`
 3.  In the file replace the credentials placeholders with your actual credentials from AWS
 4.  In the file replace the availability zone with the 3 availabilty zones closest to your present location
@@ -25,5 +25,27 @@ Things to do before running the project:
 6.  After initialising ensure the credentail changes you made earlier are running by using the command `terraform plan`
       - This command allows you understand the changes terraform will action before you apply the changes for real
       - If the command is successful you should see the amount of additions your changes will action
+7.  Go to your AWS account
+8. Search for EC2 and on the left hand side click instances
+9. Go back to your terminal and run the command `terraform apply`
+      - This command actions the planned changes
+      - Once the command has run you should see the following:
+            1. An EC2 instance running
+            2. Click the link of the instance and you should see a `Public IPv4 address` with a link that says open address
+            3. Once the link opens clcik the IP address and remove the `https://`
+            4. Add onto the end of the link add `/index.html` and enter. You should see a blank webpage and text that reads `My EC2 web server`
+            5. Go back to AWS and on the right hand panel you should see a link that says security groups and if clicked on it should show you a security group of                  test
+            6. Go back and seach for vpc. Click on it and you should a new VPC has been created of `test-vpc`
+            7. On the left hand side you should see a link that says subnets. Click on it an you will see the command has created 3 private and 3 public subnets
+            8. Go back on the left hand side the command should have also created a route table and internet gateway
+10. After you have observed the instance and the feature the code has created. You need to now terminate the instance to stop unnecessary charges
+11. Go back to your terminal and run the following `terraform destroy`
+      - This command will terminate your instance along with all the security configurations made
+      - If you want to re-run the code just run `terraform apply` and it should begin a new EC2 instance
+
+## Notes
+- This is only a free demonstration of configuring an EC2 instance from code and displaying a basic html page from an ubuntu server. If you want to further explore terraform and its capabilities please visit the following link https://www.terraform.io/
+- The naming of the VPC, subnets, internet gateway etc are entirely up to you and can be changed according to your preferences
+- For further AWS documentation on EC2 instances and additional features you can add to an instance e.g. a load balancer please visit the following https://docs.aws.amazon.com/ec2/index.html
 
 
