@@ -104,4 +104,21 @@ resource "aws_security_group" "allow_web" {
     }
 }
 
+# Create a network interface (logical networking component in a VPC that represents a virtual network card)
+resource "aws_network_interface" "web-server-nic" {
+    subnet_id = "${element(aws_subnet.public_subnet.*.id, 0)}"
+    private_ips     = ["10.0.1.50"]
+    security_groups = [aws_security_group.allow_web.id]
+}
+
+# Assign an elastic IP to the network interface
+resource "aws_eip" "one" {
+    vpc                       = true
+    network_interface         = aws_network_interface.web-server-nic.id
+    associate_with_private_ip = "10.0.1.50"
+    depends_on = [
+      aws_internet_gateway.my_internet_gateway
+    ]
+}
+
 
