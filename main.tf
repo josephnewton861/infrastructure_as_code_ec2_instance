@@ -144,7 +144,7 @@ resource "aws_instance" "web-server-instance" {
         sudo apt update -y
         sudo apt install apache2 -y
         sudo systemctl start apache2
-        sudo bash -c 'echo My ec2 web server > /var/www/html/index.html'
+        sudo bash -c 'echo My EC2 web server > /var/www/html/index.html'
   EOF
   tags = {
       name = "web-server"

@@ -1,3 +1,10 @@
-# Files to ignore
-/terraform.tfvars
+# Local .terraform directories
 **/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# tfvars file
+/terraform.tfvars
+
