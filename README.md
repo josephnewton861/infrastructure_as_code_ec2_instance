@@ -1,7 +1,7 @@
 # Infrastructure as code (IAC) EC2 instance
 
 ## Overview of project
-This project consists of setting up an Amazon Web Services (AWS) on demand free Elastic Computing Cloud (EC2) instance with necessary security configurations and ubuntu server with a basic html page.
+This project consists of setting up an Amazon Web Services (AWS) on demand free Elastic Computing Cloud (EC2) instance with necessary security configurations and ubuntu server with a basic html page using terraform.
 
 ## Setup instructions 
 For this project you will need the following:
