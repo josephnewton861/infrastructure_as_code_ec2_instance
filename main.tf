@@ -61,6 +61,13 @@ resource "aws_route_table" "public_route_table_test" {
     }
 }
 
+# Link the public subnets to a route table
+resource "aws_route_table_association" "route_table_association" {
+    count = "${length(var.subnets.public)}"
+    subnet_id = "${element(aws_subnet.public_subnet.*.id, count.index)}"
+    route_table_id = aws_route_table.public_route_table_test.id
+}
+
 # Create a security group
 resource "aws_security_group" "allow_web" {
     name        = "allow_web"
@@ -121,4 +128,26 @@ resource "aws_eip" "one" {
     ]
 }
 
+# Setting up ubuntu server
+resource "aws_instance" "web-server-instance" {
+  ami = "ami-0a244485e2e4ffd03"
+  instance_type = "t2.micro"
+  availability_zone = "eu-west-2a"
+  key_name = "iac-test"
+
+  network_interface {
+    device_index = 0
+    network_interface_id = aws_network_interface.web-server-nic.id
+  }
+  user_data = <<-EOF
+        #!/bin/bash
+        sudo apt update -y
+        sudo apt install apache2 -y
+        sudo systemctl start apache2
+        sudo bash -c 'echo My ec2 web server > /var/www/html/index.html'
+  EOF
+  tags = {
+      name = "web-server"
+  }
+}
 
